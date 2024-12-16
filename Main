@@ -1,0 +1,93 @@
+/*
+* 	Created by ANDRESCOM.<br/>
+* 	User: CARLOS DIAZ<br/>
+* 	Date: 22/04/2018<br/>
+* 	Time: 18:15 PM<br/>
+*
+*	Ejercicio 8.2.1.2
+*	Elaborar un algoritmo que lea números enteros para los elementos de dos matrices de (5 X 5) y que calcule cada elemento de
+*	una tercera matriz sumando los elementos correspondientes de las dos anteriores. Al finalizar imprimir las tres matrices.
+*
+*   Analisis:
+*   Datos de Salida
+*   Valores de Entrada          arrayOne        Arreglo [5][5]      :   Entero
+*   Valores de Entrada          arrayTwo        Arreglo [5][5]      :   Entero
+*   Procesar Calculo            desea                               :   Carácter
+*
+*   Datos de Salida
+*   Valores de Salida           arrayOne        Arreglo [5][5]      :   Entero
+*   Valores de Salida           arrayTwo        Arreglo [5][5]      :   Entero
+*   Valores de Salida           arraySum        Arreglo [5][5]      :   Entero
+*
+*   Proceso:
+*   Analizando el problema observamos que tenemos que leer un conjunto de  datos de tipo entero, dado que tenemos que almacenar
+*   a cada uno de estos valores sin  que se pierda ninguno de ellos, debemos utilizar un Tipo de Dato Estructurado como el Arre-
+*   glo. En este caso tenemos una Matriz  de datos de tipo entero, de cinco (05) Renglones  por cinco (05) Columnas, por lo que
+*   se requiere definir un Arreglo Bidimensional de datos de tipo entero. Para leer los valores de un Arreglo Bidimensional, se
+*   requiere definir dos ciclo (FOR) Un  primer ciclo (FOR) que nos permitirá procesar a cada uno de los datos de cada Remnglón
+*   y un segundo ciclo (FOR) anidado dentro del primero que nos permitirá procesar a cada uno de los valores de cada Columna.
+*
+*                               arrayOne        Arreglo [5][5]      :   Entero
+*                               arrayTwo        Arreglo [5][5]      :   Entero
+*
+*   Se requiere definir dos (03) variables de tipo  CONTADOR, la peimera que nos permitirá controlar la condición del ciclo que
+*   procesa a cada uno de los Renglones y la segunda que nos permitirá controlar la condición del ciclo que procesar a cada una
+*   de las Columnas.
+*
+*                               i = (i + 1)
+*                               j = (j + 1)
+*/
+# include <iostream>
+
+#include "Calcular.h"
+
+int main() {
+
+    // Se declaran las variables.
+    char desea;
+    int **arrayOne = new int * [3];
+    int **arrayTwo = new int * [3];
+    int **arraySum = new int * [3];
+
+    // Se define, crea e inicializa el objeto de la clase.
+    auto objCalcular = Calcular();
+
+    // Se inicia el planteamiento del ciclo.
+    do {
+        // Se realiza el llamdo al método.
+        objCalcular.Encabezado();
+
+        // Imprimir.
+        cout << "" << endl;
+        cout << "=========================" << endl;
+        cout << "|VALORES PARA EL ARREGLO|" << endl;
+        cout << "--------------------------------------------------------" << endl;
+        cout << "|VALORES DE ENTRADA PARA EL ARREGLO DE DATOS [ARRAYONE]|" << endl;
+        cout << "--------------------------------------------------------" << endl;
+
+        // Se inicia el planteamiento del ciclo.
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                // Imprimir.
+                cout << "" << endl;
+                cout << "=================================" << endl;
+                cout << "|DIGITE VALOR ELEMENTO| [ " << i << " , "  << j << " ]" << endl;
+                // Se realiza el llamado al método.
+                arrayOne [i][j] = objCalcular.Entero();
+                // Se establecen los Datos de Entrada en los Datos del Objeto.
+                objCalcular.setArrayOne(arrayOne);
+            }
+        }
+
+
+
+        // Imprimir.
+        cout << "" << endl;
+        cout << "=================================" << endl;
+        cout << "|DESEA PROCESAR UN NUEVO CALCULO|" << endl;
+        // Se realiza el llamado al método.
+        desea = objCalcular.Selector();
+    } while (desea == 's' || desea == 'S');
+
+    return 0;
+}
