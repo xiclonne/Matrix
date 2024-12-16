@@ -1,0 +1,38 @@
+//
+// Created by Carlitos on 11/12/2024.
+//
+
+# ifndef CALCULAR_H
+# define CALCULAR_H
+# include <iostream>
+using namespace std;
+
+
+class Calcular {
+    // Se definen los métodos de la clase.
+public:
+    void setArrayOne(int *arrayOne[3]);
+
+    void setArrayTwo(int *arrayTwo[3]);
+
+    void setArraySum(int *arraySum[3]);
+
+    int **getArrayOne();
+    int **getArrayTwo();
+    int **getArraySum();
+
+    Calcular();
+    Calcular(int *arrayOne[3], int *arrayTwo[3]);
+
+    void Encabezado();
+    int Entero();
+    char Selector();
+
+    // Se declaran los atributos de clase.
+private:
+    int **arrayOne = new int * [3];
+    int **arrayTwo = new int * [3];
+    int **arraySum = new int * [3];
+};
+
+# endif //CALCULAR_H
