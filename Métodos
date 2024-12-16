@@ -1,0 +1,172 @@
+//
+// Created by Carlitos on 11/12/2024.
+//
+
+# include "Calcular.h"
+
+// Se definen los métodos de Entrada de Datos.
+void Calcular::setArrayOne(int *arrayOne[3]) {
+    Calcular::arrayOne = arrayOne;
+}
+
+void Calcular::setArrayTwo(int *arrayTwo[3]) {
+    Calcular::arrayTwo = arrayTwo;
+}
+
+void Calcular::setArraySum(int *arraySum[3]) {
+    Calcular::arraySum = arraySum;
+}
+
+// Se definen los métodos de Acceso de Datos.
+int **Calcular::getArrayOne() {
+    return arrayOne;
+}
+
+int **Calcular::getArrayTwo() {
+    return arrayTwo;
+}
+
+int **Calcular::getArraySum() {
+    return arraySum;
+}
+
+// Se define el método Constructor por Defecto.
+Calcular::Calcular() {
+    arrayOne = new int * [3];
+    arrayTwo = new int * [3];
+}
+
+// Se define el método Constructor Parametrizado.
+Calcular::Calcular(int *arrayOne[3], int *arrayTwo[3]) {
+    Calcular::arrayOne = arrayOne;
+    Calcular::arrayTwo = arrayTwo;
+}
+
+// Se define el método Encabezado.
+void Calcular::Encabezado() {
+    // Imprimir.
+    cout << "" << endl;
+    cout << "========================================================" << endl;
+    cout << "|        DETERMINAR Y CALCULAR SUMA DE MATRICES        |" << endl;
+    cout << "--------------------------------------------------------" << endl;
+}
+
+// Se define el método Entero.
+int Calcular::Entero() {
+    // Se declaran las variables.
+    int control;
+    int val;
+    string cadena;
+    string numero;
+
+    // Se inicia el planteamiento del ciclo.
+    do {
+        do {
+            // Se inicializan las variables.
+            control = 1;
+
+            // Solicitar Valores de Entrada.
+            cout << "--------------------------------------------------" << endl;
+            cout << "|DIGITE UN VALOR VALIDO PARA LOS DATOS DE ENTRADA|" << endl;
+            cout << "--------------------------------------------------" << endl;
+
+            // Leer Valores de Entrada.
+            getline(cin, cadena);
+
+            // Asignación.
+            numero = cadena;
+
+            // Imprimir.
+            cout << "----" << endl;
+
+            // Se ejecutan las operaciones aritméticas y lógicas.
+            if(numero.empty()) {
+                control = 0;
+            }
+            else {
+                // Se inicia el planteamiento del ciclo.
+                for(int i = 0; i <= numero.length() - 1; i++) {
+                    // Calcular.
+                    char car = numero[i];
+                    // Se ejecutan las operacionesa ritmética sy lógicas.
+                    if(!((car >= '0' && car <= '9') || car == '-')) {
+                        control = 0;
+                    }
+                    if(car == '-' && i > 0) {
+                        control = 0;
+                    }
+                }
+            }
+        } while (control != 1);
+        // Calcular.
+        val = stoi(numero);
+        if(val < -9 || val > 9) {
+            control = 0;
+        }
+    } while (control != 1);
+    // Se retorna el valor del método.
+    return val;
+}
+
+// Se define el método Selector.
+char Calcular::Selector() {
+    // Se declaran las variables.
+    int i;
+    int control;
+    char val;
+    string cadena;
+    string caracter;
+    do {
+        // Se inicializan las variables.
+        control = 1;
+
+        // Solicitar Valores de Entrada.
+        cout << "--------------------------------------------------" << endl;
+        cout << "|DIGITE UN VALOR VALIDO PARA LOS DATOS DE ENTRADA|" << endl;
+        cout << "--------------------------------------------------" << endl;
+        cout << "|(S)| PROCESAR NUEVO CLACULO|" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "|(N)| TERMINAR LA APLICACION|" << endl;
+        cout << "=============================" << endl;
+
+        // Leer Valores de Entrada.
+        getline(cin, cadena);
+
+        // Asignación.
+        caracter = cadena;
+
+        // Imprimir.
+        cout << "----" << endl;
+
+        // Se ejecutan las operaciones aritméticas y lógicas.
+        if(caracter.empty()) {
+            control = 0;
+        }
+        else {
+            // Se inicia el planteamiento del ciclo.
+            for(int j = 0; j <= caracter.length()- 1; j++) {
+                // Calcular.
+                char car = caracter[j];
+                // Se ejecutan las operaciones ariotméticas y lógicas.
+                if(!((car == 's' || car == 'S' || car == 'n' || car == 'N'))) {
+                    control = 0;
+                }
+            }
+        }
+    } while (control != 1);
+    // Calcular.
+    val = caracter[0];
+    // Se retorna el valor del método.
+    return val;
+}
+
+
+
+
+
+
+
+
+
+
+
